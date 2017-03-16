@@ -16,8 +16,6 @@ defmodule Fadex.Fadecandy do
     config_byte = if (config.keyframe_interpolation == :disabled),
       do: config_byte ^^^ (1 <<< 1), else: config_byte
 
-    
-
     message = [
       0x00,
       0xFF,
@@ -28,7 +26,6 @@ defmodule Fadex.Fadecandy do
     ]
 
     bin = :binary.list_to_bin message
-    IO.puts inspect bin
     :gen_tcp.send(socket, bin)
   end
 end
